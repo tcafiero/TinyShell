@@ -1,49 +1,4 @@
-/**
- * @file text_editor.c
- * @author Shinichiro Nakamura
- * @brief NT-Shell用テキストエディタモジュールの実装。
- * @details
- * 文字列の編集を論理的に扱うためのモジュール。
- * このモジュールはビューに関して一切感知しない。
- */
-
-/*
- * ===============================================================
- *  Natural Tiny Shell (NT-Shell)
- *  Version 0.0.6
- * ===============================================================
- * Copyright (c) 2010-2011 Shinichiro Nakamura
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use,
- * copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following
- * conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- * ===============================================================
- */
-
 #include "text_editor.h"
-
-/**
- * @brief テキストエディタを初期化する。
- *
- * @param p テキストエディタ構造体。
- */
 void text_editor_init(text_editor_t *p)
 {
     p->pos = 0;
@@ -51,12 +6,6 @@ void text_editor_init(text_editor_t *p)
     p->buffer[p->len] = '\0';
 }
 
-/**
- * @brief 文字を挿入する。
- *
- * @param p テキストエディタ構造体。
- * @param c 文字。
- */
 int text_editor_insert(text_editor_t *p, char c)
 {
     if (p->len < sizeof(p->buffer) - 1) {
@@ -79,11 +28,6 @@ int text_editor_insert(text_editor_t *p, char c)
     return 0;
 }
 
-/**
- * @brief 文字を削除する。
- *
- * @param p テキストエディタ構造体。
- */
 int text_editor_backspace(text_editor_t *p)
 {
     if (0 < p->pos) {
@@ -104,21 +48,11 @@ int text_editor_backspace(text_editor_t *p)
     return 0;
 }
 
-/**
- * @brief カーソル位置を取得する。
- *
- * @param p テキストエディタ構造体。
- */
 int text_editor_cursor_get_position(text_editor_t *p)
 {
     return p->pos;
 }
 
-/**
- * @brief カーソルを先頭に移動させる。
- *
- * @param p テキストエディタ構造体。
- */
 int text_editor_cursor_head(text_editor_t *p)
 {
     if (0 < p->pos) {
@@ -128,11 +62,6 @@ int text_editor_cursor_head(text_editor_t *p)
     return 0;
 }
 
-/**
- * @brief カーソルを最後尾に移動させる。
- *
- * @param p テキストエディタ構造体。
- */
 int text_editor_cursor_tail(text_editor_t *p)
 {
     if (p->pos < p->len) {
@@ -142,11 +71,6 @@ int text_editor_cursor_tail(text_editor_t *p)
     return 0;
 }
 
-/**
- * @brief カーソルを左へ移動させる。
- *
- * @param p テキストエディタ構造体。
- */
 int text_editor_cursor_left(text_editor_t *p)
 {
     if (0 < p->pos) {
@@ -156,11 +80,6 @@ int text_editor_cursor_left(text_editor_t *p)
     return 0;
 }
 
-/**
- * @brief カーソルを右へ移動させる。
- *
- * @param p テキストエディタ構造体。
- */
 int text_editor_cursor_right(text_editor_t *p)
 {
     if (p->pos < p->len) {
@@ -170,12 +89,6 @@ int text_editor_cursor_right(text_editor_t *p)
     return 0;
 }
 
-/**
- * @brief 文字列を設定する。
- *
- * @param p テキストエディタ構造体。
- * @param buf 文字列が格納されたバッファ。
- */
 int text_editor_set_text(text_editor_t *p, char *buf)
 {
     char *src = buf;
@@ -196,13 +109,6 @@ int text_editor_set_text(text_editor_t *p, char *buf)
     return n;
 }
 
-/**
- * @brief 文字列を取得する。
- *
- * @param p テキストエディタ構造体。
- * @param buf 文字列を格納するバッファ。
- * @param siz バッファサイズ。
- */
 int text_editor_get_text(text_editor_t *p, char *buf, int siz)
 {
     char *src = p->buffer;
@@ -219,11 +125,6 @@ int text_editor_get_text(text_editor_t *p, char *buf, int siz)
     return n;
 }
 
-/**
- * @brief 文字列を消去する。
- *
- * @param p テキストエディタ構造体。
- */
 void text_editor_clear(text_editor_t *p)
 {
     p->pos = 0;

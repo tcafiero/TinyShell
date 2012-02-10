@@ -1,12 +1,3 @@
-/**
- * @file vtparse.h
- * @brief VTParse
- * @details
- * An implementation of Paul Williams' DEC compatible state machine parser
- * This code is in the public domain.
- * @author Joshua Haberman <joshua@reverberate.org>
- */
-
 #include "vtparse_table.h"
 
 #define MAX_INTERMEDIATE_CHARS 2

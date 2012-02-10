@@ -1,12 +1,3 @@
-/**
- * @file vtparse.c
- * @brief VTParse
- * @details
- * An implementation of Paul Williams' DEC compatible state machine parser
- * This code is in the public domain.
- * @author Joshua Haberman <joshua@reverberate.org>
- */
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -26,8 +17,6 @@ void vtparse_init(vtparse_t *parser, vtparse_callback_t cb)
 
 static void do_action(vtparse_t *parser, vtparse_action_t action, char ch)
 {
-    /* Some actions we handle internally (like parsing parameters), others
-     * we hand to our client for processing */
 
     switch(action) {
         case VTPARSE_ACTION_PRINT:

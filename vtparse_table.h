@@ -1,12 +1,3 @@
-/**
- * @file vtparse_table.h
- * @brief VTParse
- * @details
- * An implementation of Paul Williams' DEC compatible state machine parser
- * This code is in the public domain.
- * @author Joshua Haberman <joshua@reverberate.org>
- */
-
 #ifndef VTPARSE_TABLE_H
 #define VTPARSE_TABLE_H
 
