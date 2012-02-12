@@ -1,0 +1,1 @@
+connect teraterm for terminal emulator on COM2 
